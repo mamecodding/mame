@@ -1,0 +1,6 @@
+requests
+gTTS
+elevenlabs
+pydub
+playsound
+
