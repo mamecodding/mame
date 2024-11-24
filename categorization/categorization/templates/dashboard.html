@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrol Paneli</title>
+</head>
+<body>
+    <h2>Radyo Yayın Akışını Yönet</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <h3>Yeni Yayın Ekleyin</h3>
+    <form action="/add_program" method="POST">
+        <label for="program_name">Program Adı:</label>
+        <input type="text" id="program_name" name="program_name" required>
+        <br>
+        <label for="program_time">Yayın Saati:</label>
+        <input type="time" id="program_time" name="program_time" required>
+        <br>
+        <label for="program_type">Yayın Türü:</label>
+        <select id="program_type" name="program_type">
+            <option value="news">Haber</option>
+            <option value="music">Müzik</option>
+            <option value="weather">Hava Durumu</option>
+        </select>
+        <br>
+        <button type="submit">Yayın Ekle</button>
+    </form>
+</body>
+</html>
